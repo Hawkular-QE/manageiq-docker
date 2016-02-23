@@ -1,6 +1,6 @@
 #!/bin/bash 
 #
-# Copyright 2015 Red Hat, Inc. and/or its affiliates
+# Copyright 2016 Red Hat, Inc. and/or its affiliates
 # and other contributors as indicated by the @author tags.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,13 +15,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+export RUBY_VERSION="2.2.4"
+
 curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 curl -L get.rvm.io | bash -s stable
 /etc/profile.d/rvm.sh
 /usr/local/rvm/bin/rvm reload
 /usr/local/rvm/bin/rvm requirements run
 
-echo "Installing Ruby..."
-rvm install ruby-2.2.4 --autolibs=read-only
-/bin/bash --login -c "rvm use 2.2.4 --default"
+echo "Installing Ruby version ${RUBY_VERSION}..."
+rvm install ruby-${RUBY_VERSION} --autolibs=read-only
+/bin/bash --login -c "rvm use ${RUBY_VERSION} --default"
 
