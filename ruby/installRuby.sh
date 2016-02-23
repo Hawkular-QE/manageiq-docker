@@ -15,7 +15,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 export RUBY_VERSION="2.2.4"
+echo "Ruby Version: $RUBY_VERSION"
 
 curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 curl -L get.rvm.io | bash -s stable
