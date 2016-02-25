@@ -26,14 +26,18 @@ RUN /bin/bash -c "${TOOL_HOME}/memcache.sh"
 
 ADD miqPostgres.sh ${TOOL_HOME}/miqPostgres.sh
 RUN chmod 755 ${TOOL_HOME}/miqPostgres.sh
-#RUN /bin/bash -c "${TOOL_HOME}/miqPostgres.sh"
 
 RUN cd ~ \
  && git clone https://github.com/ManageIQ/manageiq
 
-WORKDIR ${TOOL_HOME}
+ADD createDB.sh ${TOOL_HOME}/createDB.sh
+RUN chmod 755 ${TOOL_HOME}/createDB.sh
 
 ADD startManageIQ.sh ${TOOL_HOME}/startManageIQ.sh
 RUN chmod 755 ${TOOL_HOME}/startManageIQ.sh
+
+WORKDIR ${MANAGEIQ_HOME}
+
+EXPOSE 3000
 
 CMD ["/bin/bash", "-c", "${TOOL_HOME}/startManageIQ.sh"]

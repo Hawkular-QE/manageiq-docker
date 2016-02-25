@@ -31,3 +31,8 @@ echo "Starting postgress..."
 sleep 5
 
 su postgres -c "psql -c \"CREATE ROLE root SUPERUSER LOGIN PASSWORD 'smartvm'\""
+
+# Create DB
+echo "Creating DB..."
+su postgres -c "${TOOL_HOME}/createDB.sh"
+

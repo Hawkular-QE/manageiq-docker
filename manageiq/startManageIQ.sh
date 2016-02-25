@@ -23,11 +23,10 @@ if [ -z ${TOOL_HOME} ] || [ -z ${MANAGEIQ_HOME} ]; then
    exit 1
 fi
 
-# Frist, start postgres
+# First, start postgres
 ${TOOL_HOME}/miqPostgres.sh
 
 # Start MemangeIQ
-bundle install
 ${MANAGEIQ_HOME}/bin/setup      # Installs dependencies, config, prepares database, etc
 bundle exec rake evm:start 	# Starts the ManageIQ EVM Application in the background
 bundle exec rails s        	# Starts the application server

@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-export RUBY_VERSION="2.2.4"
+export RUBY_VERSION=2.2.4
 echo "Ruby Version: $RUBY_VERSION"
 
 curl -sSL https://rvm.io/mpapis.asc | gpg --import -
@@ -28,4 +28,5 @@ curl -L get.rvm.io | bash -s stable
 echo "Installing Ruby version ${RUBY_VERSION}..."
 rvm install ruby-${RUBY_VERSION} --autolibs=read-only
 /bin/bash --login -c "rvm use ${RUBY_VERSION} --default"
+
 
